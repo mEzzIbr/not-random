@@ -1,0 +1,44 @@
+body {
+  width: 430px;
+  height: 300px;
+  direction: rtl;
+  text-align: center;
+  background-color: #1f1e1f;
+  font-family: "Alexandria";
+  color: aliceblue;
+}
+
+#copy {
+  background-color: rgb(69, 133, 218);
+  border-radius: 15px;
+  padding: 10px;
+  font-weight: 600;
+  width: 50%;
+  color: aliceblue;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  left: 25%;
+  bottom: 5px;
+  margin-top: 10px;
+}
+.content {
+  margin-right: 7px;
+  padding: 7px;
+  margin-left: 15px;
+}
+.copy-icon {
+  position: relative;
+  font-size: large;
+  align-self: center;
+  cursor: pointer;
+  flex: 1;
+  left: 13px;
+  max-width: fit-content;
+}
+
+.text-container {
+  border: solid seashell 3px;
+  border-radius: 12px;
+}

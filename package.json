@@ -1,0 +1,24 @@
+{
+  "name": "notrandom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BringPoemContent.js",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mEzzIbr/not-random.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mEzzIbr/not-random/issues"
+  },
+  "homepage": "https://github.com/mEzzIbr/not-random#readme"
+}
