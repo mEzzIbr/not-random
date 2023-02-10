@@ -1,3 +1,4 @@
+
 var SUPABASE_URL =
   "https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1";
 var SUPABASE_HEADERS = {
