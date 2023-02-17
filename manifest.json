@@ -1,32 +1,32 @@
 {
-    "name" : "نصٌ ليس عشوائيًا",
-    "description" : "مولد نص عربي مستخرج من آلاف القصائد والأشعار العربية",
-    "version" : "1.0",
-    "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js",
-        "type" : "module"
-    },
-    "icons" : {
-        "16": "icon.png",
-        "32": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
-    },
-  
-    "background.service_worker": {
-        "persistent": false
-    },
-    "permissions": ["storage" , "activeTab", "contextMenus", "scripting", "tabs"],
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon" : "icon.png"
-    },
-    "content_scripts": [
-        {
-            "match_origin_as_fallback": true,
-            "matches": ["https://*/*"],
-          "js": ["BringPoemContent.js"]
-        }
-      ]
+  "name": "نصٌ ليس عشوائيًا",
+  "description": "مولد نص عربي مستخرج من آلاف القصائد والأشعار العربية",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "background.service_worker": {
+    "persistent": false
+  },
+  "permissions": ["storage", "activeTab", "contextMenus", "scripting", "tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "match_origin_as_fallback": true,
+      "matches": ["https://*/*"],
+      "js": ["popup.js"]
+    }
+  ]
 }

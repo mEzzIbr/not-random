@@ -9,40 +9,33 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="main.css" />
-    <title style="color: aliceblue;">نص ليس عشوائي</title>
+    <title>نص ليس عشوائي</title>
     <script src="popup.js"></script>
   </head>
   <body>
-    <div
-      style="display: flex; position: relative; margin: auto; top: 15%"
-      class="text-container"
-    >
-      <div id="p-title" class="content p-title" style="flex: 1">
+    <div>
+    <div class="label">عنوان القصيدة (نص قصير)</div>
+
+    <div class="text-container">
+      <div id="p-title" class="content p-title">جار التحميل...</div>
+      <span class="copy-icon" id="copy-btn"> 📋</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="label">محتوى القصيدة (نص طويل)</div>
+    <div id="charRange">
+    <input id="charSlider" type="range" min="20" max="400" step="20" value="100" />
+    <span id="charIndicator">  </span>
+  </div>
+    <div class="text-container">
+      <div id="p-content" class="content p-content">
         جار التحميل...
       </div>
-      <span class="copy-icon" style="flex: 1"> 📋</span>
+      <span class="copy-icon" id="copy-btn2"> 📋</span>
     </div>
+  </div>
 
-    <div
-      style="
-        display: flex;
-        position: relative;
-        margin: auto;
-        top: 15%;
-        margin-top: 15px;
-      "
-      class="text-container"
-    >
-      <div
-        id="p-content"
-        class="content p-content"
-        style="flex: 1; border-radius: 5px solid"
-      >
-        جار التحميل...
-      </div>
-      <span class="copy-icon"> 📋</span>
-    </div>
-
-    <button id="copy">وّلد نصوصًا جديدة 🔁</button>
+    <button id="generate">ولد نصوصًا جديدة 🔁</button>
   </body>
 </html>

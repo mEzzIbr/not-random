@@ -8,7 +8,22 @@ body {
   color: aliceblue;
 }
 
-#copy {
+.label {
+  position: relative;
+  top: 15px;
+}
+#charRange {
+  position: relative;
+  top: 20px;
+  
+}
+#charIndicator {
+  position: relative;
+  bottom: 5px;
+  margin-right: 40px;
+}
+
+#generate {
   background-color: rgb(69, 133, 218);
   border-radius: 15px;
   padding: 10px;
@@ -28,6 +43,13 @@ body {
   padding: 7px;
   margin-left: 15px;
 }
+#p-title {
+  flex: 1;
+}
+.p-content {
+  flex: 1;
+  border-radius: 5px solid;
+}
 .copy-icon {
   position: relative;
   font-size: large;
@@ -36,9 +58,15 @@ body {
   flex: 1;
   left: 13px;
   max-width: fit-content;
+  flex: 1;
 }
 
 .text-container {
   border: solid seashell 3px;
   border-radius: 12px;
+  display: flex;
+  position: relative;
+  margin: auto;
+  top: 15%;
+  margin-top: 30px;
 }
