@@ -17,16 +17,9 @@
   "background.service_worker": {
     "persistent": false
   },
-  "permissions": ["storage", "activeTab", "contextMenus", "scripting", "tabs"],
+  "permissions": ["activeTab", "contextMenus", "scripting", "tabs"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
-  },
-  "content_scripts": [
-    {
-      "match_origin_as_fallback": true,
-      "matches": ["https://*/*"],
-      "js": ["popup.js"]
-    }
-  ]
+  }
 }
