@@ -1,0 +1,9 @@
+html ,body {
+  width: 430px;
+  height: 300px;
+  direction: rtl;
+  text-align: center;
+  background-color: #1f1e1f;
+  font-family: "Alexandria";
+  color: aliceblue;
+}
