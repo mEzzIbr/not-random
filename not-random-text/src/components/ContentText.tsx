@@ -1,38 +1,55 @@
+import { Card, Col, InputNumber, Row, Slider } from "antd";
+import Paragraph from "antd/es/typography/Paragraph";
+import Title from "antd/es/typography/Title";
 import { useState } from "react";
 
 const ContentText = (prop: any) => {
   console.log("🚀 ~ prop:", prop);
   const content = prop.title[0].poem_text;
+  const [editableContent, setEditableContent] = useState(content);
+
   const [lengthContent, setLengthContent] = useState(100);
-  // This function is called when the first range slider changes
-  const changeLengthContent = (event: any) => {
-    setLengthContent(event.target.value);
+
+  const changeLengthContent = (newValue: any) => {
+    setLengthContent(newValue);
   };
+
   return (
     <div>
-      <div className="label">محتوى القصيدة (نص طويل)</div>
-      <div id="charRange">
-        <div>
-          <input
+      <Title level={5}>محتوى القصيدة (نص طويل)</Title>
+
+      <Row justify="space-around">
+        <Col span={12}>
+          <Slider
+            min={20}
+            max={400}
             onChange={changeLengthContent}
-            type="range"
-            min="20"
-            max="400"
-            step="20"
-            value={lengthContent}
+            value={typeof lengthContent === "number" ? lengthContent : 0}
           />
-          <span id="charIndicator">{lengthContent} </span>
-        </div>
-      </div>
-      <div className="text-container">
-        <div id="p-content" className="content p-content">
-          {content.slice(0, lengthContent)}
-        </div>
-        <span className="copy-icon" id="copy-btn2">
-          {" "}
-          📋
-        </span>
-      </div>
+        </Col>
+        <Col span={4}>
+          <InputNumber
+            min={20}
+            max={400}
+            style={{ margin: "0 16px" }}
+            value={lengthContent}
+            onChange={changeLengthContent}
+          />
+        </Col>
+      </Row>
+      <br />
+      <Card bodyStyle={{ padding: "3px 2px" }}>
+        <Paragraph
+          copyable={{ tooltips: ["انقر لنسخ النص", "تم النسخ"] }}
+          editable={{
+            tooltip: "انقر لتعديل النص",
+            triggerType: ["icon", "text"],
+            onChange: setEditableContent,
+          }}
+        >
+          {editableContent.slice(0, lengthContent)}
+        </Paragraph>
+      </Card>
     </div>
   );
 };

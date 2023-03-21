@@ -14,20 +14,16 @@
   margin-right: 40px;
 }
 
-#generate {
-  background-color: rgb(69, 133, 218);
-  border-radius: 15px;
-  padding: 10px;
+.generateBtn {
   font-weight: 600;
   width: 50%;
-  color: aliceblue;
-  outline: none;
-  cursor: pointer;
-  border: none;
   position: fixed;
   left: 25%;
   bottom: 5px;
-  margin-top: 10px;
+}
+.box-text {
+  width: 100%;
+  text-align: center;
 }
 .content {
   margin-right: 7px;
