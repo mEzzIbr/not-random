@@ -22,7 +22,7 @@ const ContentText = (prop: any) => {
         <Col span={12}>
           <Slider
             min={20}
-            max={400}
+            max={1000}
             onChange={changeLengthContent}
             value={typeof lengthContent === "number" ? lengthContent : 0}
           />

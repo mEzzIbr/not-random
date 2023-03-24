@@ -20,18 +20,15 @@ import { ReloadOutlined } from "@ant-design/icons";
 function App() {
   const [poems, setPoem] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [poemURL, setPoemURL] = useState("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1");
+  const [isArabic, setIsArabic] = useState(true)
 
   const generateNewText = () => {
     setIsLoading(true);
-    axios
-      .get(
-        "https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1"
-      )
-      .then((res) => {
-        setPoem(res.data);
-
-        setIsLoading(false);
-      });
+    axios.get(poemURL).then((res) => {
+      setPoem(res.data);
+      setIsLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -45,6 +42,16 @@ function App() {
     setIsDarkMode((previousValue) => !previousValue);
   };
 
+  const handleLang = () => {
+    setIsArabic((previousValue) => !previousValue);
+    if (isArabic) {
+      setPoemURL("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/e_random_record?limit=1")
+    }
+    if(!isArabic) {
+      setPoemURL("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1")
+    }
+  };
+
   return (
     <ConfigProvider
       theme={{
@@ -55,8 +62,8 @@ function App() {
       }}
     >
       <Card bordered={false}>
-        <Row justify="end">
-          <Col span={4}>
+        <Row gutter={[48, 24]}>
+          <Col span={4} >
             <Switch
               checkedChildren="داكن"
               unCheckedChildren="فاتح"
@@ -64,9 +71,18 @@ function App() {
               onClick={handleClick}
             />
           </Col>
+          <Col span={4}>
+            <Switch
+              id="LangSwitch"
+              checkedChildren="AR"
+              unCheckedChildren="EN"
+              defaultChecked
+              onChange={handleLang}
+            />
+          </Col>
         </Row>
-        <Spin tip="جار التحميل ..." spinning={isLoading}>
-          <div className="App">
+        <Spin tip="جار التحميل ..." spinning={isLoading} >
+          <div className="App" style={{ marginTop: "15px" }}>
             <Space
               direction="vertical"
               size="middle"
