@@ -79,7 +79,7 @@ function App() {
         },
       }}
     >
-      <Card bordered={false}>
+      <Card bordered={false} dir={isArabic ? "rtl" : "ltr"}>
         <Row>
           <Col span={8}>
             <Switch
