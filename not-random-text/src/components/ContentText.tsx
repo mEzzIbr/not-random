@@ -2,11 +2,12 @@ import { Card, Col, InputNumber, Row, Slider } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ContentText = (prop: any) => {
-  console.log("🚀 ~ prop:", prop);
   const content = prop.title[0].poem_text;
   const [editableContent, setEditableContent] = useState(content);
+  const { t } = useTranslation();
 
   const [lengthContent, setLengthContent] = useState(100);
 
@@ -16,7 +17,7 @@ const ContentText = (prop: any) => {
 
   return (
     <div>
-      <Title level={5}>محتوى القصيدة (نص طويل)</Title>
+      <Title level={5}> {t("app.contentPoem")}</Title>
 
       <Row justify="space-around">
         <Col span={12}>
@@ -40,9 +41,9 @@ const ContentText = (prop: any) => {
       <br />
       <Card bodyStyle={{ padding: "3px 2px" }}>
         <Paragraph
-          copyable={{ tooltips: ["انقر لنسخ النص", "تم النسخ"] }}
+          copyable={{ tooltips: [t("app.clickToCopy"), t("app.copied")] }}
           editable={{
-            tooltip: "انقر لتعديل النص",
+            tooltip: t("app.clickToEdit"),
             triggerType: ["icon", "text"],
             onChange: setEditableContent,
           }}

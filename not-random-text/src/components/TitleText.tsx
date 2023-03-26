@@ -2,19 +2,20 @@ import { Card } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const TitleText = (prop: any) => {
-  //console.log("🚀 ~ prop:", prop);
   const [editableStr, setEditableStr] = useState(prop.title[0].poem_title);
+  const { t } = useTranslation();
 
   return (
     <div>
-      <Title level={5}>عنوان القصيدة (نص قصير)</Title>
+      <Title level={5}> {t("app.titlePoem")}</Title>
       <Card bodyStyle={{ padding: "3px 2px" }}>
         <Paragraph
-          copyable={{ tooltips: ["انقر لنسخ النص", "تم النسخ"] }}
+          copyable={{ tooltips: [t("app.clickToCopy"), t("app.copied")] }}
           editable={{
-            tooltip: "انقر لتعديل النص",
+            tooltip: t("app.clickToEdit"),
             triggerType: ["icon", "text"],
             onChange: setEditableStr,
           }}
