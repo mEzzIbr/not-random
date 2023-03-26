@@ -10,6 +10,7 @@ import {
   ConfigProvider,
   Divider,
   Row,
+  Segmented,
   Skeleton,
   Space,
   Spin,
@@ -17,11 +18,17 @@ import {
   theme,
 } from "antd";
 import { ReloadOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+
 function App() {
+  const { t, i18n } = useTranslation();
+
   const [poems, setPoem] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [poemURL, setPoemURL] = useState("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1");
-  const [isArabic, setIsArabic] = useState(true)
+  const [poemURL, setPoemURL] = useState(
+    "https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1"
+  );
+  const [isArabic, setIsArabic] = useState(true);
 
   const generateNewText = () => {
     setIsLoading(true);
@@ -33,24 +40,35 @@ function App() {
 
   useEffect(() => {
     generateNewText();
-  }, []);
+  }, [poemURL]);
 
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const handleClick = () => {
+  const handleSwitchDarkMode = () => {
     setIsDarkMode((previousValue) => !previousValue);
   };
 
-  const handleLang = () => {
+  const handleLang = (e: any) => {
     setIsArabic((previousValue) => !previousValue);
     if (isArabic) {
-      setPoemURL("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/e_random_record?limit=1")
+      i18n.changeLanguage("en");
+
+      setPoemURL(
+        "https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/e_random_record?limit=1"
+      );
     }
-    if(!isArabic) {
-      setPoemURL("https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1")
+    if (!isArabic) {
+      i18n.changeLanguage("ar");
+      setPoemURL(
+        "https://wkraomcjwgqbobeutgna.supabase.co/rest/v1/random_record?limit=1"
+      );
     }
   };
+  const [themOptions, setThemOptions] = useState([
+    t("app.darkMode"),
+    t("app.lightMode"),
+  ]);
 
   return (
     <ConfigProvider
@@ -61,27 +79,22 @@ function App() {
         },
       }}
     >
-      <Card bordered={false}>
-        <Row gutter={[48, 24]}>
-          <Col span={4} >
+      <Card bordered={false} dir={isArabic ? "rtl" : "ltr"}>
+        <Row>
+          <Col span={8}>
             <Switch
-              checkedChildren="داكن"
-              unCheckedChildren="فاتح"
+              checkedChildren={t("app.darkMode")}
+              unCheckedChildren={t("app.lightMode")}
               defaultChecked
-              onClick={handleClick}
+              onClick={handleSwitchDarkMode}
             />
           </Col>
-          <Col span={4}>
-            <Switch
-              id="LangSwitch"
-              checkedChildren="AR"
-              unCheckedChildren="EN"
-              defaultChecked
-              onChange={handleLang}
-            />
+          <Col span={8} offset={8}>
+            <Segmented options={["عربي", "EN"]} onChange={handleLang} />
           </Col>
         </Row>
-        <Spin tip="جار التحميل ..." spinning={isLoading} >
+
+        <Spin tip={t("app.isLoading")} spinning={isLoading}>
           <div className="App" style={{ marginTop: "15px" }}>
             <Space
               direction="vertical"
@@ -104,7 +117,7 @@ function App() {
                 icon={<ReloadOutlined />}
                 onClick={generateNewText}
               >
-                <span>ولد أشعارًا جديدة</span>
+                <span>{t("app.generateNewText")}</span>
               </Button>
             </Space>
           </div>

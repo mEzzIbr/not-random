@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import axios from "axios";
+import "./services/i18n";
 
 const SUPABASE_HEADERS = {
   apikey:
